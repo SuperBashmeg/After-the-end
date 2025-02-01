@@ -4,5 +4,5 @@ player_speed = 450
 jump_height = -700
 time_scale = 1
 air_acceleration_factor = 0.9
-friction = 0.9
+friction = 0.8
 ground_friction = 0.5

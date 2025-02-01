@@ -1,3 +1,5 @@
+import pygame
+
 from config import *
 
 class Player:
@@ -10,6 +12,7 @@ class Player:
         self.acceleration = pygame.Vector2(0, 0)
         self.on_ground = False
         self.freeze = False
+        self.channel = 0
 
     def get_collisions(self, platforms):
         collisions = {"Left":[],"Down":[],"Right":[],"Up":[]}
@@ -25,6 +28,8 @@ class Player:
             (self.x + self.width / 2, self.y)  # top middle
         ]
         for platform in platforms:
+            if not self.channel in platform.channels:
+                continue
             platform_corners = [
                 (platform.x, platform.y),  # top left
                 (platform.x + platform.width, platform.y),  # top right
@@ -64,6 +69,8 @@ class Player:
 
         return collisions
 
+    def move_channel(self, channel):
+        self.channel = channel
 
     def __unclip(self, collisions):
         if len(collisions["Down"]) > 0:
@@ -114,13 +121,11 @@ class Player:
                 self.acceleration.x = -player_speed
             else:
                 self.acceleration.x = -player_speed * air_acceleration_factor
-                print("Air")
         elif move_right and not move_left:
             if self.on_ground:
                 self.acceleration.x = player_speed
             else:
                 self.acceleration.x = player_speed * air_acceleration_factor
-                print("Air")
         else:
             self.acceleration.x = 0
 
@@ -179,4 +184,4 @@ class Player:
 
 
     def draw(self, screen):
-        pygame.draw.rect(screen, "red", (self.x, self.y, self.width, self.height))
+        pygame.draw.rect(screen, (255, 0, 0, 200), (self.x, self.y, self.width, self.height))
