@@ -19,7 +19,7 @@ class Platform:
         pass
 
     def draw(self, screen):
-        pygame.draw.rect(screen, self.color, (self.x, self.y, self.width, self.height))
+        pygame.draw.rect(screen, self.color, (self.x, self.y, self.width, self.height), 0, 2)
 
 
 class MovingPlatform(Platform):
