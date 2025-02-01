@@ -1,0 +1,8 @@
+import pygame, math
+gravity = 980
+player_speed = 450
+jump_height = -700
+time_scale = 1
+air_acceleration_factor = 0.9
+friction = 0.7
+ground_friction = 0.9

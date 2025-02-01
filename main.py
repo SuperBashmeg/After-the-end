@@ -1,5 +1,7 @@
-# Example file showing a circle moving on screen
-import pygame
+from config import *
+from player import Player
+from platform import Platform
+from levels import level1
 
 # pygame setup
 pygame.init()
@@ -7,48 +9,33 @@ screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
 dt = 0
-gravity = 9.8
-acceleration = [0, 0]
-velocity = [0, 0]
 
-player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
+# Initialize player and platforms
+player = Player(640, 100)
+
+platforms = level1.platforms
 
 while running:
-    # poll for events
-    # pygame.QUIT event means the user clicked X to close your window
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-    # fill the screen with a color to wipe away anything from last frame
+    keys = pygame.key.get_pressed()
+    move_left = keys[pygame.K_LEFT] or keys[pygame.K_a]
+    move_right = keys[pygame.K_RIGHT] or keys[pygame.K_d]
+    space_bar = keys[pygame.K_SPACE]
+
     screen.fill("black")
 
-    pygame.draw.circle(screen, "red", player_pos, 40)
-    # Physics
-    velocity[0] += acceleration[0] * dt
-    velocity[1] += acceleration[1] * dt
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_w]:
-        acceleration[1] = -300
-    if keys[pygame.K_s]:
-        acceleration[1] = 300
-    if keys[pygame.K_a]:
-        acceleration[0] = -300
-    if keys[pygame.K_d]:
-        acceleration[0] = 300
+    player.update(dt, platforms, move_left, move_right, space_bar)
+    player.draw(screen)
 
-    #gravity
-    acceleration[1] += gravity
+    for platform in platforms:
+        platform.draw(screen)
 
-    player_pos.y += velocity[1] * dt
-    player_pos.x += velocity[0] * dt
-
-    # flip() the display to put your work on screen
     pygame.display.flip()
 
-    # limits FPS to 60
-    # dt is delta time in seconds since last frame, used for framerate-
-    # independent physics.
-    dt = clock.tick(60) / 1000
+    # Limit FPS and calculate delta time
+    dt = clock.tick(60) / 1000 * time_scale
 
 pygame.quit()
