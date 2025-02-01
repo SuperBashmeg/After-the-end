@@ -6,8 +6,6 @@ class Platform:
             height = 25
         if width < 50 and (not left_collision or not right_collision):
             width = 50
-        elif width < 25:
-            width = 25
         self.x = x
         self.y = y
         self.color = color

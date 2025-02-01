@@ -48,7 +48,9 @@ class Player:
                     n_clipped += 1
 
             #Down check
-            if (clipped_position[2] or clipped_position[3] or clipped_position[5]) and not clipped_position[4] and not clipped_position[6] and n_clipped <= 3 and platform.collisions["down"]:
+            # if (clipped_position[2] or clipped_position[3] or clipped_position[5]) and not clipped_position[4] and not clipped_position[6] and n_clipped <= 3 and platform.collisions["down"]:
+            #     collisions["Down"].append(platform)
+            if player_position[0][0] < platform_corners[1][0] and player_position[1][0] > platform_corners[0][0] and platform.y < self.y + self.height + 0.001 < platform.y + platform.height and platform.y - self.y > 10 and platform.collisions["down"]:
                 collisions["Down"].append(platform)
             #Up check
             elif (clipped_position[0] or clipped_position[1] or clipped_position[7]) and not clipped_position[4] and not clipped_position[6] and n_clipped <= 3 and platform.collisions["up"]:
@@ -61,6 +63,7 @@ class Player:
                 collisions["Right"].append(platform)
 
         return collisions
+
 
     def __unclip(self, collisions):
         if len(collisions["Down"]) > 0:
@@ -111,12 +114,13 @@ class Player:
                 self.acceleration.x = -player_speed
             else:
                 self.acceleration.x = -player_speed * air_acceleration_factor
+                print("Air")
         elif move_right and not move_left:
             if self.on_ground:
                 self.acceleration.x = player_speed
             else:
                 self.acceleration.x = player_speed * air_acceleration_factor
-            print(self.acceleration.x, self.on_ground)
+                print("Air")
         else:
             self.acceleration.x = 0
 
@@ -144,7 +148,6 @@ class Player:
     def update(self, dt, platforms, move_left=False, move_right=False, spacebar=False):
         if not self.freeze:
             collisions = self.get_collisions(platforms)
-            print(collisions)
             if len(collisions["Down"]) > 0:
                 self.on_ground = True
             else:
