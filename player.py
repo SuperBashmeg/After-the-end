@@ -21,12 +21,13 @@ class Player:
         self.max_trail_length = 20  # Maximum length of the trail
         self.death_effect_active = False
         self.death_effect_timer = 0
-        self.death_effect_velocity = 2000
         self.spawn_position = pygame.Vector2(x, y)
         self.squish_timer = 0
         self.squish_duration = 0.2  # Duration of the squish effect
         self.particles = []
         self.draw_player = True
+        self.jump_cooldown = 0.05
+        self.jump_cooldown_timer = 0
 
     def get_clipped_position(self, object):
         player_position = [
@@ -173,9 +174,7 @@ class Player:
             self.respawn(self.spawn_position.x, self.spawn_position.y)
             return
         self.death_effect_timer -= dt
-        # direction = pygame.Vector2(self.spawn_position.x-self.x, self.spawn_position.y-self.y).normalize()
-        # self.y += self.death_effect_velocity * direction.y * dt
-        # self.x += self.death_effect_velocity * direction.x * dt
+
 
 
 
@@ -286,20 +285,27 @@ class Player:
         elif self.velocity.x > 0:
             self.velocity.x = min(self.velocity.x, player_speed)
 
-    def friction(self):
+    def friction(self, dt):
+        if 0 < self.velocity.x < 0.1:
+            self.velocity.x = 0
+        elif 0 > self.velocity.x > -0.1:
+            self.velocity.x = 0
         if self.on_ground:
-            self.velocity.x *= ground_friction
+            self.velocity.x *= (1 - ground_friction * dt*15)
         else:
-            self.velocity.x *= friction
+            self.velocity.x *= (1 - friction * dt*15)
 
     def jump(self):
+        print(self.on_ground, self.coyote_timer)
         if self.on_ground or self.coyote_timer > 0:
             self.velocity.y = jump_height
             self.jump_buffer = False
+            self.jump_cooldown_timer = self.jump_cooldown
             self.coyote_timer = 0
             self.squish_timer = self.squish_duration
-            self.height = self.original_height * 0.8  # Squish height
+            self.height = self.original_height * 0.8
             self.width = self.original_width * 1.2
+            jump_sound.play()
 
     def update_squish(self, dt):
         if self.squish_timer > 0:
@@ -313,6 +319,8 @@ class Player:
             self.width = self.original_width
 
     def update(self, dt, level, move_left=False, move_right=False):
+        if self.jump_cooldown_timer > 0:
+            self.jump_cooldown_timer -= dt
         if self.death_effect_active:
             self.death_effect(dt)
         if not self.freeze:
@@ -339,7 +347,8 @@ class Player:
                             particle = Particle((random_x, self.y+self.height-8), size, size, (255, 0, 0), 0, [random.uniform(-25, 25)*velocity_multiplier, random.uniform(5, 25)*velocity_multiplier], 0, 0)
                             self.particles.append(particle)
                 self.on_ground = True
-                self.coyote_timer = self.coyote_time
+                if self.jump_cooldown_timer <= 0:
+                    self.coyote_timer = self.coyote_time
             else:
                 self.on_ground = False
                 self.coyote_timer -= dt
@@ -364,7 +373,7 @@ class Player:
             self.y += self.velocity.y * dt
 
             if (not move_left and not move_right) or (move_right and move_left):
-                self.friction()
+                self.friction(dt)
         for particle in self.particles[:]:
             particle.update(dt)
             if particle.destroyed:

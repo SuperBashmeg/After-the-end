@@ -1,0 +1,488 @@
+{
+  "level0": {
+    "platforms": [
+      {
+        "x": 300,
+        "y": 500,
+        "width": 400,
+        "height": 60,
+        "color": [255, 255, 255],
+        "channels": [0, 1, 2],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+
+      },
+      {
+        "x": 740,
+        "y": 540,
+        "width": 200,
+        "height": 60,
+        "color": [255, 255, 255],
+        "channels": [0],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      },
+      {
+        "x": 900,
+        "y": 400,
+        "width": 200,
+        "height": 60,
+        "color": [255, 255, 255],
+        "channels": [0],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      },
+      {
+        "x": 440,
+        "y": 300,
+        "width": 10,
+        "height": 200,
+        "color": [0, 255, 0],
+        "channels": [1],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      },
+      {
+        "x": 800,
+        "y": 300,
+        "width": 200,
+        "height": 25,
+        "color": [0, 255, 0],
+        "channels": [0],
+        "collisions": {"Right": false, "Left": false, "Top": false, "Bottom": true}
+      }
+    ],
+    "spikes": [
+      {
+        "x": 640,
+        "y": 474,
+        "width": 25,
+        "height": 50,
+        "color": [100, 100, 100],
+        "channels": [1],
+        "rotation": 0
+      }
+    ],
+    "star": {
+      "x": 200,
+      "y": 150,
+      "size": 25
+    },
+    "player": {
+      "x": 640,
+      "y": 100
+    },
+    "texts": [
+    ]
+  },
+  "level1": {
+    "platforms": [
+      {
+        "x": 0,
+        "y": 500,
+        "width": 600,
+        "height": 60,
+        "color": [255, 255, 255],
+        "channels": [0, 1, 2],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+
+      },
+      {
+        "x": 300,
+        "y": 300,
+        "width": 25,
+        "height": 200,
+        "color": [0, 255, 0],
+        "channels": [0],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      }
+    ],
+    "spikes": [],
+    "star": {
+      "x": 500,
+      "y": 400,
+      "size": 25
+    },
+    "player": {
+      "x": 100,
+      "y": 300
+    },
+    "texts": [
+      {
+        "text": "To switch between time channels press 'Q' and 'E'",
+        "x": 300,
+        "y": 200,
+        "color": [255, 255, 0]
+      }
+    ]
+  },
+  "level2": {
+    "platforms": [
+      {
+        "x": 0,
+        "y": 500,
+        "width": 1200,
+        "height": 60,
+        "color": [255, 255, 255],
+        "channels": [0, 1, 2],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+
+      },
+      {
+        "x": 300,
+        "y": 300,
+        "width": 25,
+        "height": 200,
+        "color": [0, 255, 0],
+        "channels": [0],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      },
+      {
+        "x": 600,
+        "y": 300,
+        "width": 25,
+        "height": 200,
+        "color": [0, 0, 255],
+        "channels": [1],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      },
+      {
+        "x": 900,
+        "y": 300,
+        "width": 25,
+        "height": 200,
+        "color": [200, 0, 0],
+        "channels": [2],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      }
+    ],
+    "spikes": [],
+    "star": {
+      "x": 1200,
+      "y": 400,
+      "size": 25
+    },
+    "player": {
+      "x": 100,
+      "y": 300
+    },
+    "texts": [
+      {
+        "text": "You have 3 time channels. Also you can use '1', '2', '3' to switch between them",
+        "x": 300,
+        "y": 200,
+        "color": [255, 255, 0]
+      }
+    ]
+  },
+  "level3": {
+    "platforms": [
+      {
+        "x": 0,
+        "y": 500,
+        "width": 1200,
+        "height": 60,
+        "color": [255, 255, 255],
+        "channels": [0, 1, 2],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+
+      },
+      {
+        "x": 300,
+        "y": 300,
+        "width": 25,
+        "height": 200,
+        "color": [0, 255, 255],
+        "channels": [0, 1],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      },
+      {
+        "x": 600,
+        "y": 300,
+        "width": 25,
+        "height": 200,
+        "color": [255, 0, 255],
+        "channels": [1, 2],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      },
+      {
+        "x": 900,
+        "y": 300,
+        "width": 25,
+        "height": 200,
+        "color": [255, 255, 0],
+        "channels": [2, 0],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      }
+    ],
+    "spikes": [],
+    "star": {
+      "x": 1200,
+      "y": 400,
+      "size": 25
+    },
+    "player": {
+      "x": 100,
+      "y": 300
+    },
+    "texts": [
+      {
+        "text": "Some objects have more than one time channel",
+        "x": 300,
+        "y": 200,
+        "color": [255, 255, 0]
+      }
+    ]
+  },
+  "level4": {
+    "platforms": [
+      {
+        "x": 0,
+        "y": 500,
+        "width": 200,
+        "height": 60,
+        "color": [255, 255, 255],
+        "channels": [0, 1, 2],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+
+      },
+      {
+        "x": 400,
+        "y": 500,
+        "width": 200,
+        "height": 60,
+        "color": [0, 255, 0],
+        "channels": [0],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      }
+    ],
+    "spikes": [],
+    "star": {
+      "x": 600,
+      "y": 400,
+      "size": 25
+    },
+    "player": {
+      "x": 100,
+      "y": 300
+    },
+    "texts": [
+      {
+        "text": "Sometimes, you need to jump using 'Space' to get to the end",
+        "x": 300,
+        "y": 200,
+        "color": [255, 255, 0]
+      }
+    ]
+  },
+  "level5": {
+    "platforms": [
+      {
+        "x": 0,
+        "y": 500,
+        "width": 190,
+        "height": 60,
+        "color": [255, 255, 255],
+        "channels": [0, 1, 2],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+
+      },
+      {
+        "x": 550,
+        "y": 500,
+        "width": 200,
+        "height": 60,
+        "color": [0, 255, 0],
+        "channels": [0],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      },
+      {
+        "x": 150,
+        "y": 500,
+        "width": 50,
+        "height": 260,
+        "color": [255, 255, 255],
+        "channels": [0, 1, 2],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      },
+      {
+        "x": 150,
+        "y": 700,
+        "width": 400,
+        "height": 60,
+        "color": [255, 255, 255],
+        "channels": [0, 1, 2],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      },
+      {
+        "x": 500,
+        "y": 500,
+        "width": 50,
+        "height": 260,
+        "color": [255, 255, 255],
+        "channels": [0, 1, 2],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      }
+    ],
+    "spikes": [],
+    "star": {
+      "x": 600,
+      "y": 400,
+      "size": 25
+    },
+    "player": {
+      "x": 100,
+      "y": 300
+    },
+    "texts": [
+      {
+        "text": "You can use 'R' to restart the level",
+        "x": 300,
+        "y": 200,
+        "color": [255, 255, 0]
+      }
+    ]
+  },
+  "level6": {
+    "platforms": [
+      {
+        "x": 0,
+        "y": 500,
+        "width": 1200,
+        "height": 60,
+        "color": [255, 255, 255],
+        "channels": [0, 1, 2],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+
+      }
+    ],
+    "spikes": [
+      {
+        "x": 300,
+        "y": 474,
+        "width": 25,
+        "height": 50,
+        "color": [100, 100, 100],
+        "channels": [0, 1, 2],
+        "rotation": 0
+      },
+      {
+        "x": 600,
+        "y": 474,
+        "width": 25,
+        "height": 50,
+        "color": [0, 100, 100],
+        "channels": [0, 1],
+        "rotation": 0
+      },
+      {
+        "x": 900,
+        "y": 474,
+        "width": 25,
+        "height": 50,
+        "color": [100, 100, 0],
+        "channels": [1,2],
+        "rotation": 0
+      }
+    ],
+    "star": {
+      "x": 1200,
+      "y": 400,
+      "size": 25
+    },
+    "player": {
+      "x": 100,
+      "y": 300
+    },
+    "texts": [
+      {
+        "text": "There spikes in this game to!!! Be careful",
+        "x": 300,
+        "y": 200,
+        "color": [255, 150, 0]
+      }
+    ]
+  },
+  "level7": {
+    "platforms": [
+      {
+        "x": 0,
+        "y": 500,
+        "width": 600,
+        "height": 60,
+        "color": [255, 255, 255],
+        "channels": [0, 1, 2],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      },
+      {
+        "x": 200,
+        "y": 250,
+        "width": 300,
+        "height": 60,
+        "color": [255, 255, 255],
+        "channels": [0, 1, 2],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      },
+      {
+        "x": 400,
+        "y": 450,
+        "width": 200,
+        "height": 100,
+        "color": [255, 255, 255],
+        "channels": [0, 1, 2],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      },
+      {
+        "x": 1000,
+        "y": 500,
+        "width": 600,
+        "height": 60,
+        "color": [255, 255, 255],
+        "channels": [0, 1, 2],
+        "collisions": {"Right": true, "Left": true, "Top": true, "Bottom": true}
+      }
+    ],
+    "spikes": [
+      {
+        "x": 250,
+        "y": 335,
+        "width": 25,
+        "height": 50,
+        "color": [100, 100, 100],
+        "channels": [0, 1, 2],
+        "rotation": 180
+      },
+      {
+        "x": 300,
+        "y": 335,
+        "width": 25,
+        "height": 50,
+        "color": [100, 100, 100],
+        "channels": [0, 1, 2],
+        "rotation": 180
+      },
+      {
+        "x": 350,
+        "y": 335,
+        "width": 25,
+        "height": 50,
+        "color": [100, 100, 100],
+        "channels": [0, 1, 2],
+        "rotation": 180
+      }
+    ],
+    "star": {
+      "x": 1200,
+      "y": 400,
+      "size": 25
+    },
+    "player": {
+      "x": 100,
+      "y": 300
+    },
+    "texts": [
+      {
+        "text": "The longer you hold 'Space' the higher you jump!",
+        "x": 300,
+        "y": 200,
+        "color": [150, 250, 0]
+      }
+    ]
+  }
+}

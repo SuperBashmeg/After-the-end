@@ -4,13 +4,13 @@ from config import *
 import pygame.gfxdraw
 
 class Spike:
-    def __init__(self, x, y, channels, width=20, height=50, color=pygame.Color(0, 255, 0)):
+    def __init__(self, x, y, channels, width=20, height=50, color=pygame.Color(100, 100, 100), rotation=0):
         self.x = x
         self.y = y
         self.width = width
         self.height = height
         self.color = color
-        self.angle = math.pi  # Initial rotation angle
+        self.angle = math.pi+math.radians(rotation)  # Initial rotation angle
         self.channels = channels
 
     def draw(self, screen):

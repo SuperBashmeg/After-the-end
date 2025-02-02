@@ -1,0 +1,76 @@
+{
+    "gravity": 980,
+    "player_speed": 450,
+    "jump_height": -700,
+    "time_scale": 1,
+    "air_acceleration_factor": 0.9,
+    "friction": 0.5,
+    "ground_friction": 1,
+    "starting_level": 1,
+    "hidden_objects_opacity": 50,
+    "resolution": {
+        "width": 1920,
+        "height": 1080
+    },
+    "AvailableResolutions": [
+        {
+            "width": 3840,
+            "height": 2160
+        },
+        {
+            "width": 2560,
+            "height": 1440
+        },
+        {
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "width": 1280,
+            "height": 720
+        },
+        {
+            "width": 1600,
+            "height": 900
+        },
+        {
+            "width": 1366,
+            "height": 768
+        },
+        {
+            "width": 2048,
+            "height": 1536
+        },
+        {
+            "width": 1920,
+            "height": 1440
+        },
+        {
+            "width": 1856,
+            "height": 1392
+        },
+        {
+            "width": 1600,
+            "height": 1200
+        },
+        {
+            "width": 1440,
+            "height": 1080
+        },
+        {
+            "width": 1400,
+            "height": 1050
+        },
+        {
+            "width": 1280,
+            "height": 960
+        },
+        {
+            "width": 1024,
+            "height": 768
+        }
+    ],
+    "fullscreen": false,
+    "volume": 0.1,
+    "fps": 60
+}
