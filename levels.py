@@ -12,12 +12,12 @@ class Level:
         self.spikes = spikes
 
 def return_level(level=1):
-    if level == 1:
-        return level1
+    if level == 0:
+        return level0
     else:
-        return level1
+        return level0
 
-level1 = Level([
+level0 = Level([
     Platform(300, 500, [0, 1, 2], 400, 60),
     Platform(740, 540, [0], 200, 60),
     Platform(900, 400, [0], 200, 60),

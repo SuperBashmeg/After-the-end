@@ -316,13 +316,13 @@ class Player:
         if self.death_effect_active:
             self.death_effect(dt)
         if not self.freeze:
-            if self.y+self.height/2 > 720:
+            if self.y+self.height/2 > HEIGHT:
                 self.death()
                 return
             elif self.y+self.height/2 < 0:
                 self.death()
                 return
-            elif self.x+self.width/2 > 1280:
+            elif self.x+self.width/2 > WIDTH:
                 self.death()
                 return
             elif self.x+self.width/2 < 0:

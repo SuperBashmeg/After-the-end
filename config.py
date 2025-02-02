@@ -9,3 +9,5 @@ friction = 0.8
 ground_friction = 0.5
 starting_level = 1
 hidden_objects_opacity = 50
+WIDTH = 1280
+HEIGHT = 720

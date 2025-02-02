@@ -4,14 +4,15 @@ from config import *
 from player import Player
 from levels import return_level
 from particle import Particle
+from button import Button
 
 # pygame setup
 pygame.init()
 pygame.display.set_caption("After The End Of Time")
 pygame.display.set_icon(pygame.image.load("assets/icon.png"))
-screen = pygame.display.set_mode([1280, 720])
+screen = pygame.display.set_mode([WIDTH, HEIGHT])
 
-channels = [pygame.Surface((1280, 720), pygame.SRCALPHA) for _ in range(5)]
+channels = [pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA) for _ in range(5)]
 for channel in channels:
     channel.set_alpha(hidden_objects_opacity)
 
@@ -25,9 +26,12 @@ dt = 0
 font = pygame.font.SysFont("Comic Sans MS", 36)
 text_color = (255, 255, 255)
 text = font.render("Time: 1", True, text_color)
+fps_text = font.render("FPS: 0", True, text_color)
+is_main_menu = True
+display_debug = False
 
-particle_surface = pygame.Surface((1280, 720), pygame.SRCALPHA)
-top_particle_surface = pygame.Surface((1280, 720), pygame.SRCALPHA)
+particle_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
+top_particle_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
 particles = []
 top_particles = []
 levelId = starting_level
@@ -42,14 +46,14 @@ spikes = level.spikes
 def spawn_background_particles(count):
     for _ in range(count):
         size = random.randint(5, 200)
-        particles.append(Particle((random.randint(1, 1280), random.randint(1, 720)), size, size, (255, 255, 255, 10), 250, [random.uniform(-5, 5), random.uniform(-5, 5)], random.uniform(1, 360), random.uniform(-2, 2)))
+        particles.append(Particle((random.randint(1, WIDTH), random.randint(1, HEIGHT)), size, size, (255, 255, 255, 10), 250, [random.uniform(-5, 5), random.uniform(-5, 5)], random.uniform(1, 360), random.uniform(-2, 2)))
 spawn_background_particles(10)
 def change_level(level, screen):
     global platforms, channels, player, levelId
     levelId += 1
     platforms = level.platforms
-    channels = [pygame.Surface((1280, 720), pygame.SRCALPHA) for _ in range(3)]
-    top_particles.append(Particle((640, 360), 1000, 1000, (125, 125, 0, 255), 0.5, [0, 0], 0, 0, 0.25, 0.5))
+    channels = [pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA) for _ in range(3)]
+    top_particles.append(Particle((WIDTH/2, 360), 1000, 1000, (125, 125, 0, 255), 0.5, [0, 0], 0, 0, 0.25, 0.5))
     for channel in channels:
         channel.set_alpha(hidden_objects_opacity)
     channels[0].set_alpha(255)
@@ -73,6 +77,26 @@ def change_channel(channel):
         else:
             channels[i].set_alpha(hidden_objects_opacity)
 
+buttons = {
+    "Start": Button(x=100, y=100, width=200, height=50, text="Start", font=font, color=(20, 20, 20), hover_color=(50, 50, 50),
+           text_color=(255, 255, 255)),
+
+}
+
+def main_menu():
+    global is_main_menu
+    buttons["Start"].check_hover(pygame.mouse.get_pos())
+    buttons["Start"].draw(screen)
+    player.freeze = True
+    if buttons["Start"].is_clicked(pygame.mouse.get_pos(), pygame.mouse.get_pressed()):
+        is_main_menu = False
+        player.freeze = False
+
+def debug_info():
+    global fps_text
+    fps_text = font.render("FPS: " + str(int(clock.get_fps())), True, text_color)
+    screen.blit(fps_text, (10, 50))
+
 while running:
     screen.fill("black")
     particle_surface.fill("black")
@@ -81,7 +105,7 @@ while running:
         particle_respawn_time = base_particle_respawn_time
         size = random.randint(5, 200)
         spawn_background_particles(1)
-        # particles.append(Particle((random.randint(1, 1280), random.randint(1, 720)), size, size, (255, 255, 255, 10), 50, [random.uniform(-5, 5), random.uniform(-5, 5)], random.uniform(1, 360), random.uniform(1, 5)))
+        # particles.append(Particle((random.randint(1, WIDTH), random.randint(1, HEIGHT)), size, size, (255, 255, 255, 10), 50, [random.uniform(-5, 5), random.uniform(-5, 5)], random.uniform(1, 360), random.uniform(1, 5)))
     for particle in particles[:]:
         particle.update(dt)
         if particle.destroyed:
@@ -92,6 +116,11 @@ while running:
     screen.blit(channels[1], (0, 0))
     screen.blit(channels[2], (0, 0))
     star.draw(screen)
+    if is_main_menu:
+        main_menu()
+
+    if display_debug:
+        debug_info()
 
     if changing_channel:
         elapsed = pygame.time.get_ticks() - start_time
@@ -129,6 +158,8 @@ while running:
                 change_channel(4)
             elif event.key == pygame.K_r:
                 player.death()
+            elif event.key == pygame.K_F3:
+                display_debug = not display_debug
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_SPACE:
                 player.jump_buffer = False
