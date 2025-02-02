@@ -1,4 +1,5 @@
-import pygame, math
+import pygame, math, random
+from particle import Particle
 gravity = 980
 player_speed = 450
 jump_height = -700
@@ -7,3 +8,4 @@ air_acceleration_factor = 0.9
 friction = 0.8
 ground_friction = 0.5
 starting_level = 1
+hidden_objects_opacity = 50
